@@ -35,7 +35,7 @@ lab.experiment('Index Plugin', () => {
 
         const request = {
             method: 'GET',
-            url: '/'
+            url: '/api'
         };
 
         return await server.inject(request, (response) => {

@@ -1,0 +1,38 @@
+{
+  "name": "sample",
+  "version": "1.0.0",
+  "description": "Sample generated Rest API",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "lab -c -L",
+    "test-cover": "lab -c -r html -o ./test/artifacts/coverage.html && open ./test/artifacts/coverage.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/karpikpl/hapi17sample"
+  },
+  "author": "Piotr Karpala <pkarpala@infusion.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/karpikpl/hapi17sample/issues"
+  },
+  "homepage": "https://github.com/karpikpl/hapi17sample",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "dependencies": {
+    "confidence": "3.x.x",
+    "glue": "5.0.0",
+    "hapi": "17.2.0",
+    "hoek": "5.0.2",
+    "pug": "^2.0.0-rc.4",
+    "vision": "5.3.1",
+    "visionary": "6.x.x"
+  },
+  "devDependencies": {
+    "code": "5.1.2",
+    "lab": "15.2.1",
+    "nodemon": "1.x.x"
+  }
+}

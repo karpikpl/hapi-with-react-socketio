@@ -4,8 +4,6 @@ const Lab = require('lab');
 const Code = require('code');
 const Config = require('../../../config');
 const Hapi = require('hapi');
-const IndexPlugin = require('../../../server/api/index');
-
 
 const lab = exports.lab = Lab.script();
 let server;
@@ -14,10 +12,7 @@ let server;
 lab.beforeEach(async () => {
 
     const plugins = {
-        plugin: {
-            name: 'api',
-            register: IndexPlugin.register
-        },
+        plugin: require('../../../server/api/index'),
         routes: {
             prefix: '/api'
         }
@@ -38,10 +33,11 @@ lab.experiment('Index Plugin', () => {
             url: '/api'
         };
 
-        return await server.inject(request, (response) => {
+        const response = await server.inject(request);
 
-            Code.expect(response.result.message).to.match(/welcome to the plot device/i);
-            Code.expect(response.statusCode).to.equal(200);
-        });
+        Code.expect(response.result.message)
+            .to.match(/welcome to the plot device/i);
+        Code.expect(response.statusCode)
+            .to.equal(200);
     });
 });

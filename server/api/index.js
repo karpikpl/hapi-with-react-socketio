@@ -1,6 +1,6 @@
 'use strict';
 
-exports.register = function (server, options) {
+const register = function (server, options) {
 
     server.route({
         method: 'GET',
@@ -14,4 +14,9 @@ exports.register = function (server, options) {
             }
         }
     });
+};
+
+exports.plugin = {
+    register,
+    name: 'api'
 };

@@ -1,10 +1,12 @@
 'use strict';
 const Pug = require('pug');
 
-exports.register = function (server, options) {
+const register = function (server, options) {
 
     server.views({
-        engines: { pug: Pug },
+        engines: {
+            pug: Pug
+        },
         relativeTo: __dirname,
         path: '.'
     });
@@ -17,4 +19,10 @@ exports.register = function (server, options) {
             return h.view('index');
         }
     });
+};
+
+exports.plugin = {
+    register,
+    name: 'web',
+    dependencies: ['vision']
 };

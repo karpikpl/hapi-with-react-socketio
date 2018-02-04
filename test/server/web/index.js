@@ -5,8 +5,6 @@ const Code = require('code');
 const Config = require('../../../config');
 const Hapi = require('hapi');
 const Vision = require('vision');
-const HomePlugin = require('../../../server/web/index');
-
 
 const lab = exports.lab = Lab.script();
 let server;
@@ -14,16 +12,7 @@ let server;
 
 lab.beforeEach(async () => {
 
-    const plugins = [{
-        plugin:  Vision
-    },
-    {
-        plugin: {
-            name: 'web',
-            register: HomePlugin.register,
-            dependencies: 'vision'
-        }
-    }];
+    const plugins = [require('vision'), require('../../../server/web/index')];
     server = Hapi.Server({
         port: Config.get('/port/web')
     });
@@ -40,11 +29,11 @@ lab.experiment('Home Page View', () => {
             url: '/'
         };
 
-        return await server.inject(request, (response) => {
+        const response = await server.inject(request);
 
-            Code.expect(response.result).to.match(/activate the plot device/i);
-            Code.expect(response.statusCode).to.equal(200);
-
-        });
+        Code.expect(response.result)
+            .to.match(/activate the plot device/i);
+        Code.expect(response.statusCode)
+            .to.equal(200);
     });
 });

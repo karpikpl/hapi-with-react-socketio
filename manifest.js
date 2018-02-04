@@ -21,23 +21,32 @@ const manifest = {
     },
     register: {
         plugins: [
+            'vision',
             {
-                plugin:  'vision'
-            },
-            {
-                plugin: {
-                    name: 'api',
-                    register: require('./server/api/index').register
-                },
+                plugin: './server/api/index',
                 routes: {
                     prefix: '/api'
                 }
             },
+            './server/web/index',
             {
-                plugin: {
-                    name: 'web',
-                    register: require('./server/web/index').register,
-                    dependencies: 'vision'
+                plugin: 'good',
+                options: {
+                    ops: {
+                        interval: 1000
+                    },
+                    reporters: {
+                        myConsoleReporter: [{
+                            module: 'good-squeeze',
+                            name: 'Squeeze',
+                            args: [{
+                                log: '*',
+                                response: '*'
+                            }]
+                        }, {
+                            module: 'good-console'
+                        }, 'stdout']
+                    }
                 }
             }
         ]

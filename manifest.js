@@ -48,6 +48,16 @@ const manifest = {
                         }, 'stdout']
                     }
                 }
+            },
+            {
+                plugin : 'lout',
+                    options: {
+                        endpoint: '/docs',
+                        apiVersion: '1.0.0'
+                }
+            },
+            {
+                plugin: 'inert'
             }
         ]
     }

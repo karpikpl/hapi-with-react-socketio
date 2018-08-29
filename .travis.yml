@@ -1,16 +1,7 @@
-# env:
-#   global:
-#     - CC_TEST_REPORTER_ID=47cc3c19b33fda0e5a36368db290f998af17536481fa02286df3a77b7360c61d
-
 sudo: false
 language: node_js
 node_js:
   - 8
-
-# before_script:
-#   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-#   - chmod +x ./cc-test-reporter
-#   - ./cc-test-reporter before-build
 
 script:
   - yarn build
@@ -18,6 +9,7 @@ script:
   - cd client && yarn test-ci
 
 after_script:
-  - COVERALLS_REPO_TOKEN=$coveralls_repo_token cd client && yarn coveralls
+  - cp ./client/coverage/lcov.info ./coverage/lcov_1.info
+  - mv ./coverage/lcov.info ./coverage/lcov_2.info
+  - ./node_modules/.bin/lcov-result-merger './coverage/lcov_*.info' './coverage/coverage_merged.log'
   - COVERALLS_REPO_TOKEN=$coveralls_repo_token yarn coveralls
-  # - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

@@ -9,7 +9,7 @@
     "test-cover": "lab -c -L --assert code -r html -o ./test/artifacts/coverage.html && open ./test/artifacts/coverage.html",
     "build": "yarn && cd client && yarn && yarn build",
     "nyc": "nyc yarn test && nyc report --reporter=lcovonly",
-    "coveralls": "cat ./coverage/lcov.info | coveralls"
+    "coveralls": "cat ./coverage/lcov_merged.info | coveralls"
   },
   "repository": {
     "type": "git",
@@ -39,9 +39,10 @@
   },
   "devDependencies": {
     "code": "5.2.0",
+    "coveralls": "^3.0.2",
     "lab": "16.0.0",
+    "lcov-result-merger": "^3.1.0",
     "nodemon": "1.18.4",
-    "nyc": "^11.4.1",
-    "coveralls": "^3.0.2"
+    "nyc": "^11.4.1"
   }
 }

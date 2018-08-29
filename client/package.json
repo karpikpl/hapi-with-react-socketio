@@ -8,6 +8,13 @@
     "react-dom": "^16.4.2",
     "react-scripts": "1.1.5"
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!src/registerServiceWorker.js",
+      "!<rootDir>/node_modules/"
+    ]
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

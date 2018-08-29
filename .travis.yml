@@ -13,6 +13,7 @@ node_js:
 #   - ./cc-test-reporter before-build
 
 script:
+  - yarn build
   - yarn nyc
   - cd client && yarn test-ci
 

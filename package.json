@@ -32,8 +32,7 @@
     "inert": "^5.1.0",
     "lout": "^11.1.0",
     "pug": "^2.0.3",
-    "vision": "5.4.0",
-    "visionary": "6.x.x"
+    "vision": "5.4.0"
   },
   "devDependencies": {
     "code": "5.2.0",

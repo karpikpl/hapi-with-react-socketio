@@ -21,7 +21,12 @@ const manifest = {
     },
     register: {
         plugins: [
-            'vision',
+            {
+                plugin: 'vision'
+            },
+            {
+                plugin: 'inert'
+            },
             {
                 plugin: './server/api/index',
                 routes: {
@@ -55,9 +60,6 @@ const manifest = {
                         endpoint: '/docs',
                         apiVersion: '1.0.0'
                 }
-            },
-            {
-                plugin: 'inert'
             }
         ]
     }

@@ -1,5 +1,5 @@
 {
-  "name": "sample",
+  "name": "hapi-with-react-socketio",
   "version": "1.0.1",
   "description": "Sample generated Rest API",
   "main": "index.js",

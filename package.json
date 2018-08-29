@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon server.js -e js,pug",
     "test": "lab -c -L -C -l -v --threshold 95 --assert code",
-    "test-cover": "lab -c -L --assert code -r html -o ./test/artifacts/coverage.html && open ./test/artifacts/coverage.html"
+    "test-cover": "lab -c -L --assert code -r html -o ./test/artifacts/coverage.html && open ./test/artifacts/coverage.html",
+    "build": "yarn && cd client && yarn && yarn build"
   },
   "repository": {
     "type": "git",
@@ -27,7 +28,7 @@
     "good": "^8.1.1",
     "good-console": "^7.1.0",
     "good-squeeze": "^5.1.0",
-    "hapi": "17.5.3",
+    "hapi": "17.5.4",
     "hoek": "5.0.4",
     "inert": "^5.1.0",
     "lout": "^11.1.0",
@@ -37,6 +38,6 @@
   "devDependencies": {
     "code": "5.2.0",
     "lab": "16.0.0",
-    "nodemon": "1.18.3"
+    "nodemon": "1.18.4"
   }
 }

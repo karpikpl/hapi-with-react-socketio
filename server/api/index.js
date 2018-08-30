@@ -14,6 +14,19 @@ const register = function (server, options) {
             }
         }
     });
+
+    // Serve up all static content in build folder
+    server.route({
+        method: 'GET',
+        path: '/anywhere/app/{path*}',
+        handler: {
+            directory: {
+                path: Path.join(__dirname, '../../client/build/'),
+                listing: false,
+                index: true
+            }
+        }
+    });
 };
 
 exports.plugin = {

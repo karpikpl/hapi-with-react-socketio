@@ -2,3 +2,15 @@ sudo: false
 language: node_js
 node_js:
   - 8
+
+script:
+  - yarn build
+  - yarn nyc
+  - cd client && yarn test-ci
+  - cd ..
+
+after_script:
+  - cp ./client/coverage/lcov.info ./coverage/lcov_1.info
+  - mv ./coverage/lcov.info ./coverage/lcov_2.info
+  - ./node_modules/.bin/lcov-result-merger './coverage/lcov_*.info' './coverage/coverage_merged.log'
+  - COVERALLS_REPO_TOKEN=$coveralls_repo_token yarn coveralls

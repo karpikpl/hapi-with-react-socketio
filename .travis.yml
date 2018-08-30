@@ -13,3 +13,4 @@ after_script:
   - mv ./coverage/lcov.info ./coverage/lcov_2.info
   - ./node_modules/.bin/lcov-result-merger './coverage/lcov_*.info' './coverage/coverage_merged.log'
   - COVERALLS_REPO_TOKEN=$coveralls_repo_token yarn coveralls
+  #- COVERALLS_REPO_TOKEN=$coveralls_repo_token cat './coverage/coverage_merged.log' | ./node_modules/coveralls/bin/coveralls.js

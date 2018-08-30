@@ -9,7 +9,7 @@
     "test-cover": "lab -c -L --assert code -r html -o ./test/artifacts/coverage.html && open ./test/artifacts/coverage.html",
     "build": "yarn && cd client && yarn && yarn build",
     "nyc": "nyc yarn test && nyc report --reporter=lcovonly",
-    "coveralls": "cat ./coverage/lcov_merged.info | coveralls"
+    "coveralls": "cat ./coverage/coverage_merged.log | coveralls"
   },
   "repository": {
     "type": "git",

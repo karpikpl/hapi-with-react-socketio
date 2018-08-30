@@ -7,18 +7,20 @@
     "start": "nodemon server.js -e js,pug",
     "test": "lab -c -L -C -l -v --threshold 95 --assert code",
     "test-cover": "lab -c -L --assert code -r html -o ./test/artifacts/coverage.html && open ./test/artifacts/coverage.html",
-    "build": "yarn && cd client && yarn && yarn build"
+    "build": "yarn && cd client && yarn && yarn build",
+    "nyc": "nyc yarn test && nyc report --reporter=lcovonly",
+    "coveralls": "cat ./coverage/coverage_merged.log | coveralls"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/karpikpl/hapi17sample"
+    "url": "https://github.com/karpikpl/hapi-with-react-socketio"
   },
   "author": "Piotr Karpala <karpik.pl+github@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/karpikpl/hapi17sample/issues"
+    "url": "https://github.com/karpikpl/hapi-with-react-socketio/issues"
   },
-  "homepage": "https://github.com/karpikpl/hapi17sample",
+  "homepage": "https://github.com/karpikpl/hapi-with-react-socketio",
   "engines": {
     "node": ">=8.0.0"
   },
@@ -37,7 +39,10 @@
   },
   "devDependencies": {
     "code": "5.2.0",
+    "coveralls": "^3.0.2",
     "lab": "16.0.0",
-    "nodemon": "1.18.4"
+    "lcov-result-merger": "^3.1.0",
+    "nodemon": "1.18.4",
+    "nyc": "^13.0.1"
   }
 }

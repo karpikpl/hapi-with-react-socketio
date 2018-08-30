@@ -7,6 +7,7 @@ script:
   - yarn build
   - yarn nyc
   - cd client && yarn test-ci
+  - cd ..
 
 after_script:
   - cp ./client/coverage/lcov.info ./coverage/lcov_1.info

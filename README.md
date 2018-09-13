@@ -28,6 +28,10 @@ Yeoman generator for scaffolding hapi apps and plugins. https://github.com/jedir
 
 Migrated to latest dependencies (Hapi 17.0) with the idea to create PR to jedireza repo
 
+# API
+## IsOn
+`curl -X PUT -d '{"isOn":true}' -H 'Content-Type: application/json'  .:8080/api/isOn`
+
 ## License
 
 MIT

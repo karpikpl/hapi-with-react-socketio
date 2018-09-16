@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CancelablePromise from './CancelablePromise';
 
 class VersionInfo extends Component {
 
@@ -10,7 +11,9 @@ class VersionInfo extends Component {
 
   componentDidMount() {
 
-    fetch('/api/version').then((response) => {
+    this.fetchData = new CancelablePromise(fetch('/api/version'));
+
+    this.fetchData.promise.then((response) => {
 
       return response.text().then((txt) => {
           this.setState(() => {
@@ -19,10 +22,18 @@ class VersionInfo extends Component {
       });
 
     }).catch((error) => {
+
+        if (this.fetchData.hasCanceled)
+            return;
+
         this.setState(() => {
             return { version: error.message };
         });
     });
+  }
+
+  componentWillUnmount() {
+      this.fetchData.cancel();
   }
 
   render() {

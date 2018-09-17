@@ -25,6 +25,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "coveralls": "^3.0.2"
+    "coveralls": "^3.0.2",
+    "nock": "^10.0.0"
   }
 }

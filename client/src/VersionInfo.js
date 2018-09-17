@@ -2,45 +2,41 @@ import React, { Component } from 'react';
 import CancelablePromise from './CancelablePromise';
 
 class VersionInfo extends Component {
-
   constructor(props) {
-      super(props);
+    super(props);
 
-      this.state = { version: '' };
+    this.state = { version: '' };
   }
 
   componentDidMount() {
-
     this.fetchData = new CancelablePromise(fetch('/api/version'));
 
-    this.fetchData.promise.then((response) => {
-
-      return response.text().then((txt) => {
+    this.fetchData.promise
+      .then(response => {
+        return response.text().then(txt => {
           this.setState(() => {
-              return { version: txt };
+            return { version: txt };
           });
-      });
-
-    }).catch((error) => {
-
-        if (this.fetchData.hasCanceled)
-            return;
+        });
+      })
+      .catch(error => {
+        if (this.fetchData.hasCanceled) return;
 
         this.setState(() => {
-            return { version: error.message };
+          return { version: error.message };
         });
-    });
+      });
   }
 
   componentWillUnmount() {
-      this.fetchData.cancel();
+    this.fetchData.cancel();
   }
 
   render() {
     return (
-        <p className="App-intro">
-          Api says: <strong>{this.state.version}</strong>
-        </p>
+      <p className="App-intro">
+        Api says: <strong>{this.state.version}</strong>
+      </p>
     );
   }
 }

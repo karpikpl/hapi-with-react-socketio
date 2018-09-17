@@ -8,7 +8,7 @@ const criteria = {
 };
 
 const manifest = {
-  $meta: 'This file defines the plot device.',
+  $meta: 'This file defines the hapi-with-react-socketio tutorial.',
   server: {
     debug: {
       request: ['error']

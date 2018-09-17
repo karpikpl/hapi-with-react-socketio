@@ -1,8 +1,5 @@
 'use strict';
-const Fs = require('fs');
-const Util = require('util');
-const Path = require('path');
-const ReadFile = Util.promisify(Fs.readFile);
+const Package = require('../../package.json');
 
 const myDataStore = {
   isOn: true
@@ -15,7 +12,7 @@ const register = function(server, options) {
     options: {
       handler: (request, h) => {
         return {
-          message: 'Welcome to the plot device.'
+          message: 'Welcome to the hapi-with-react-socketio tutorial.'
         };
       }
     }
@@ -38,18 +35,36 @@ const register = function(server, options) {
 
   server.route({
     method: 'GET',
-    path: '/version',
+    path: '/isOn',
     options: {
-      handler: async (request, h) => {
+      handler: (request, h) => {
+        // fake data store - in memory
+        return myDataStore;
+      }
+    }
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/isHealthy',
+    options: {
+      handler: (request, h) => {
+        // fake data store - in memory
         if (myDataStore.isOn) {
-          const infoString = await ReadFile(
-            Path.join(__dirname, '../../package.json')
-          );
-          const info = JSON.parse(infoString);
-          return `Hello from ${info.name} tutorial version ${info.version}`;
+          return `I'm ok`;
         }
 
         return h.response('API is OFF').code(503);
+      }
+    }
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/version',
+    options: {
+      handler: (request, h) => {
+        return `Hello from ${Package.name} tutorial version ${Package.version}`;
       }
     }
   });

@@ -13,7 +13,7 @@ lab.experiment('Manifest', () => {
 
   lab.test('it gets manifest meta data', () => {
     Code.expect(Manifest.meta('/')).to.match(
-      /this file defines the plot device/i
+      /this file defines the hapi-with-react-socketio tutorial/i
     );
   });
 });

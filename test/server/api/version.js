@@ -11,18 +11,16 @@ lab.beforeEach(async () => {
   server = await Composer();
 });
 
-lab.experiment('Home Page View', () => {
-  lab.test('home page renders properly', async () => {
+lab.experiment('Version Info - GET /api/version', () => {
+  lab.test('it returns the app name and version', async () => {
     const request = {
       method: 'GET',
-      url: '/'
+      url: '/api/version'
     };
 
     const response = await server.inject(request);
 
-    Code.expect(response.result).to.match(
-      /activate the hapi-with-react-socketio tutorial/i
-    );
+    Code.expect(response.result).to.match(/hapi-with-react-socketio/i);
     Code.expect(response.statusCode).to.equal(200);
   });
 });

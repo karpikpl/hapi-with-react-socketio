@@ -13,6 +13,7 @@
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}",
       "!src/registerServiceWorker.js",
+      "!src/index.js",
       "!<rootDir>/node_modules/"
     ]
   },
@@ -26,6 +27,6 @@
   },
   "devDependencies": {
     "coveralls": "^3.0.2",
-    "nock": "^10.0.0"
+    "fetch-mock": "^7.0.0-alpha.6"
   }
 }

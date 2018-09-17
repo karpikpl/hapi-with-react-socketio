@@ -7,7 +7,7 @@ const criteria = {
 };
 
 const config = {
-  $meta: 'This file configures the plot device.',
+  $meta: 'This file configures the hapi-with-react-socketio tutorial.',
   projectName: 'sample',
   port: {
     web: {

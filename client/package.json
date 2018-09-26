@@ -5,6 +5,7 @@
   "proxy": "http://localhost:8080",
   "homepage": ".",
   "dependencies": {
+    "p-cancelable": "^0.5.1",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-json-syntax-highlighter": "^0.2.0",
@@ -28,6 +29,7 @@
   },
   "devDependencies": {
     "coveralls": "^3.0.2",
-    "fetch-mock": "^7.0.0-alpha.6"
+    "fetch-mock": "^7.0.0-alpha.6",
+    "leakage": "^0.4.0"
   }
 }

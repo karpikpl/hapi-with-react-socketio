@@ -3,12 +3,21 @@ import ReactDOM from 'react-dom';
 import VersionInfo from './VersionInfo';
 // using fetch-mock instead of mock because of: https://github.com/nock/nock/issues/591
 import FetchMock from 'fetch-mock';
+import { iterate } from 'leakage';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(<VersionInfo />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
+
+// it('VersionInfo does not leak memory', () => {
+//      iterate(() => {
+//          const div = document.createElement('div');
+//          ReactDOM.render(<VersionInfo />, div);
+//          ReactDOM.unmountComponentAtNode(div);
+//     });
+// });
 
 it('gets version from the backend', async () => {
   // arrange

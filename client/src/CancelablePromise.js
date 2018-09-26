@@ -5,16 +5,18 @@ class CancelablePromise {
 
     this.promise = new Promise((resolve, reject) => {
       promise.then(
-        val => (this.hasCanceled ? reject({ isCanceled: true }) : resolve(val)),
+        value =>
+          this.hasCanceled
+            ? reject({ isCanceled: true, value })
+            : resolve(value),
         error =>
-          this.hasCanceled ? reject({ isCanceled: true }) : reject(error)
+          this.hasCanceled ? reject({ isCanceled: true, error }) : reject(error)
       );
     });
   }
 
   cancel() {
     this.hasCanceled = true;
-    this.promise = null;
   }
 }
 

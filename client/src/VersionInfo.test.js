@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import VersionInfo from './VersionInfo';
-// using fetch-mock instead of mock because of: https://github.com/nock/nock/issues/591
+// using fetch-mock instead of nock because of: https://github.com/nock/nock/issues/591
 import FetchMock from 'fetch-mock';
 
 it('renders without crashing', () => {

@@ -6,10 +6,11 @@
   "scripts": {
     "start": "nodemon server.js -e js,pug",
     "test": "lab -c -L -C -l -v --threshold 95 --assert code",
-    "test-cover": "lab -c -L --assert code -r html -o ./test/artifacts/coverage.html && open ./test/artifacts/coverage.html",
+    "test-cover": "lab -c -L --assert code -v -r html -o ./test/artifacts/coverage.html -I '__core-js_shared__' && open ./test/artifacts/coverage.html",
     "build": "yarn && cd client && yarn && yarn build",
     "nyc": "nyc yarn test && nyc report --reporter=lcovonly",
-    "coveralls": "cat ./coverage/coverage_merged.log | coveralls"
+    "coveralls": "cat ./coverage/coverage_merged.log | coveralls",
+    "precommit": "lint-staged"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,12 @@
   "homepage": "https://github.com/karpikpl/hapi-with-react-socketio",
   "engines": {
     "node": ">=8.0.0"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,json,css}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
   },
   "dependencies": {
     "confidence": "3.x.x",
@@ -40,9 +47,12 @@
   "devDependencies": {
     "code": "5.2.0",
     "coveralls": "^3.0.2",
-    "lab": "16.0.0",
+    "husky": "^0.14.3",
+    "lab": "16.1.0",
     "lcov-result-merger": "^3.1.0",
+    "lint-staged": "^7.2.2",
     "nodemon": "1.18.4",
-    "nyc": "^13.0.1"
+    "nyc": "^13.0.1",
+    "prettier": "^1.14.2"
   }
 }

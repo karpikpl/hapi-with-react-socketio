@@ -4,31 +4,25 @@ const Lab = require('lab');
 const Code = require('code');
 const Composer = require('../../../index');
 
-
-const lab = exports.lab = Lab.script();
+const lab = (exports.lab = Lab.script());
 let server;
 
-
 lab.beforeEach(async () => {
-
-    server = await Composer();
+  server = await Composer();
 });
 
+lab.experiment('Index Plugin - GET /api', () => {
+  lab.test('it returns the default message', async () => {
+    const request = {
+      method: 'GET',
+      url: '/api'
+    };
 
-lab.experiment('Index Plugin', () => {
+    const response = await server.inject(request);
 
-    lab.test('it returns the default message', async () => {
-
-        const request = {
-            method: 'GET',
-            url: '/api'
-        };
-
-        const response = await server.inject(request);
-
-        Code.expect(response.result.message)
-            .to.match(/welcome to the plot device/i);
-        Code.expect(response.statusCode)
-            .to.equal(200);
-    });
+    Code.expect(response.result.message).to.match(
+      /welcome to the hapi-with-react-socketio tutorial/i
+    );
+    Code.expect(response.statusCode).to.equal(200);
+  });
 });

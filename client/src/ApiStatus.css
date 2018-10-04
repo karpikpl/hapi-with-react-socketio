@@ -1,0 +1,33 @@
+.ReactJsonSyntaxHighlighter pre {
+  font-size: 9pt;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.ReactJsonSyntaxHighlighter .string {
+  color: #98c379;
+}
+.ReactJsonSyntaxHighlighter .number {
+  color: #d19a66;
+}
+.ReactJsonSyntaxHighlighter .boolean {
+  color: #56b6c2;
+}
+.ReactJsonSyntaxHighlighter .null {
+  color: #56b6c2;
+}
+.ReactJsonSyntaxHighlighter .key {
+  color: #e06c75;
+}
+
+.ReactJsonSyntaxHighlighter {
+  color: white;
+  text-align: left;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  background-color: black;
+}
